@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARMEDICA S.A.S - Excelencia Cardiológica</title>
+    
+    <!-- Favicon de Corazón -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    
+    <!-- Tailwind CSS Local -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Google Fonts: Montserrat (Modern Titles) & Lato (Clean Text) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Estilos Base */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fcfcfc;
+            color: #334155;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- SLIDER PROFESIONAL --- */
+        .slider-container {
+            position: relative;
+            height: 85vh; /* Altura perfecta para impacto visual */
+            min-height: 600px;
+            overflow: hidden;
+            background-color: #0f172a;
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1s ease-in-out, transform 6s ease-out; /* Efecto Ken Burns lento */
+            background-size: cover;
+            background-position: top right;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Overlay Gradiente Profesional */
+        .slider-overlay {
+            position: absolute;
+            inset: 0;
+            /* Degradado de Azul Oscuro a Transparente para legibilidad de texto */
+            background: linear-gradient(90deg, 
+                rgba(15, 23, 42, 0.9) 0%, 
+                rgba(15, 23, 42, 0.7) 40%, 
+                rgba(15, 23, 42, 0.1) 100%);
+            z-index: 10;
+        }
+
+        /* Animaciones UI */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Botón Primario con Hover sólido */
+        .btn-primary {
+            background-color: #cd001b;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(205, 0, 27, 0.39);
+        }
+        .btn-primary:hover {
+            background-color: #a40016;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(205, 0, 27, 0.23);
+        }
+
+        /* Card Hover Effect */
+        .service-card {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: #252dff; /* Azul corporativo al hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar (Sticky & Shadow) -->
+    <header class="fixed w-full z-50 bg-white shadow-lg transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Logo Corporativo (Imagen) -->
+            <a href="#" class="block">
+                <!-- Reemplazar src con la URL real de tu logo de 1780x586 -->
+                <img src="img/starmedica-logo.png" 
+                     alt="STARMEDICA S.A.S" 
+                     class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Navegación Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm tracking-wide">
+                <a href="#inicio" class="text-slate-600 hover:text-star-red transition-colors relative group">
+                    Inicio
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-star-red transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#servicios" class="text-slate-600 hover:text-star-blue transition-colors relative group">
+                    Servicios
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-star-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#nosotros" class="text-slate-600 hover:text-star-blue transition-colors relative group">
+                    Nosotros
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-star-blue transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#contacto" class="btn-primary px-6 py-2.5 rounded-full font-bold flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    Agendar Cita
+                </a>
+            </nav>
+
+            <!-- Menú Móvil Botón -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-800">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+        
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-2xl">
+            <div class="flex flex-col p-6 space-y-4 font-bold text-center">
+                <a href="#inicio" class="text-slate-800 py-2" onclick="toggleMenu()">Inicio</a>
+                <a href="#servicios" class="text-slate-800 py-2" onclick="toggleMenu()">Servicios</a>
+                <a href="#nosotros" class="text-slate-800 py-2" onclick="toggleMenu()">Nosotros</a>
+                <a href="#contacto" class="bg-star-red text-white py-3 rounded-lg mt-2" onclick="toggleMenu()">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SLIDER SECTION (HERO) -->
+    <section id="inicio" class="slider-container flex items-center">
+        <!-- Imágenes de Fondo (Profesionales / Alta Resolución) -->
+        <!-- Slide 1: Tecnología / Equipos -->
+        <div class="slide active" style="background-image: url('img/Starmedica-slide-1.jpg');"></div>
+        <!-- Slide 2: Atención al Paciente -->
+        <div class="slide" style="background-image: url('img/Starmedica-slide-2.jpg');"></div>
+        <!-- Slide 3: Equipo Médico -->
+        <div class="slide" style="background-image: url('img/Starmedica-slide-3.jpg');"></div>
+
+        <!-- Overlay Oscuro para Contraste -->
+        <div class="slider-overlay pointer-events-none"></div>
+
+        <!-- Contenido Texto -->
+        <div class="container mx-auto px-6 relative z-20 pt-16">
+            <div class="max-w-3xl fade-up">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="h-1 w-12 bg-star-red"></span>
+                    <span class="text-star-blue font-bold tracking-widest text-sm uppercase bg-white/10 px-3 py-1 rounded backdrop-blur-sm border border-white/20 text-white">
+                        Calidad Certificada
+                    </span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
+                    Cuidamos cada latido <br>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-xl font-light">
+                    En <strong class="text-white">STARMEDICA</strong>, combinamos tecnología de vanguardia con calidez humana para fortalecer su salud cardiovascular.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#encuesta" class="btn-primary px-8 py-4 rounded-lg font-bold text-center flex items-center justify-center gap-2 group">
+                        <span>Encuesta de Satisfacción</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#servicios" class="px-8 py-4 rounded-lg font-bold text-center border-2 border-white text-white hover:bg-white hover:text-star-blue transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="activity" class="w-5 h-5"></i>
+                        Nuestros Servicios
+                    </a>
+                </div>
+                
+                <p class="mt-8 text-sm font-medium text-gray-400 italic flex items-center gap-2">
+                    <i data-lucide="heart" class="w-4 h-4 text-star-red fill-current animate-pulse"></i>
+                    Latimos por vos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS: Diseño Clean & Shadows -->
+    <section id="servicios" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <!-- Header Sección -->
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Nuestros Servicios</h2>
+                <div class="h-1.5 w-20 bg-star-blue mx-auto rounded-full mb-6"></div>
+                <p class="max-w-2xl mx-auto text-slate-600 text-lg">
+                    Respaldo científico y tecnológico con más de 20 años de experiencia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-card hover:shadow-floating fade-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center text-star-blue mb-6">
+                        <i data-lucide="user-check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Cardiología Adulto</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Consulta Especializada</span>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500 font-mono">CODE: 890328</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Atención integral para la prevención, diagnóstico y tratamiento de enfermedades cardiovasculares.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-card hover:shadow-floating fade-up" style="border-bottom-color: #cd001b;"> <!-- Acento Rojo -->
+                    <div class="w-14 h-14 bg-red-50 rounded-lg flex items-center justify-center text-star-red mb-6">
+                        <i data-lucide="baby" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Cardiología Pediátrica</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Especialidad</span>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500 font-mono">CODE: 890329</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Cuidado especializado del corazón para niños y adolescentes con los más altos estándares.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-card hover:shadow-floating fade-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center text-star-blue mb-6">
+                        <i data-lucide="activity" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Electrocardiograma</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Diagnóstico</span>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500 font-mono">CODE: 895100</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Registro preciso de la actividad eléctrica cardíaca con tecnología digital avanzada.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-card hover:shadow-floating fade-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center text-star-blue mb-6">
+                        <i data-lucide="timer" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Holter 24 Horas</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Monitoreo</span>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500 font-mono">CODE: 895001</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Electrocardiografía dinámica para la detección de arritmias en la actividad diaria.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-card hover:shadow-floating fade-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center text-star-blue mb-6">
+                        <i data-lucide="waves" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Ecocardiograma</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Imagenología</span>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500 font-mono">CODE: 881202</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Evaluación estructural y funcional del corazón mediante ultrasonido de alta resolución.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-card hover:shadow-floating fade-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center text-star-blue mb-6">
+                        <i data-lucide="gauge" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">MAPA</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Presión Arterial</span>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500 font-mono">CODE: 895004</span>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Monitoreo Ambulatorio de Presión Arterial para diagnóstico preciso de hipertensión.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIENES SOMOS -->
+    <section id="nosotros" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <!-- Imagen con Decoración -->
+                <div class="lg:w-1/2 relative fade-up">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-star-red/10 rounded-full z-0"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-star-blue/10 rounded-full z-0"></div>
+                    <img src="img/Starmedica-team-cardio.jpg" alt="Equipo Starmedica" class="relative z-10 rounded-lg shadow-2xl object-cover w-full h-[500px]">
+                    
+                    <!-- Stats Card Floating -->
+                    <div class="absolute bottom-8 left-8 z-20 bg-white p-6 rounded-lg shadow-xl border-l-4 border-star-blue max-w-xs hidden md:block">
+                        <p class="text-4xl font-bold text-star-blue mb-1">2012</p>
+                        <p class="text-sm text-slate-600 font-medium">Fundados en Bogotá, operando en Cali con excelencia.</p>
+                    </div>
+                </div>
+
+                <!-- Contenido -->
+                <div class="lg:w-1/2 fade-up">
+                    <span class="text-star-red font-bold uppercase tracking-wider text-sm mb-2 block">Institucionalidad</span>
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Comprometidos con la <span class="text-star-blue">salud cardiovascular</span> del país.
+                    </h2>
+                    
+                    <div class="space-y-6 text-slate-600 text-lg leading-relaxed">
+                        <p>
+                            STARMEDICA S.A.S. es una institución líder especializada en cardiología no invasiva. Nuestro objetivo es brindar una atención oportuna, segura y humanizada.
+                        </p>
+                        <p>
+                            Nos hemos consolidado como aliados estratégicos en los principales hospitales del Valle del Cauca, fortaleciendo convenios para brindar acceso continuo.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-star-blue shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Enfoque Integral</h4>
+                                <p class="text-sm text-slate-500">Diagnóstico, seguimiento y control.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-star-blue shrink-0 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Talento Humano</h4>
+                                <p class="text-sm text-slate-500">Equipo altamente calificado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 p-5 bg-slate-50 border-l-4 border-star-red italic text-slate-700 font-medium">
+                        "Trabajamos con vocación, excelencia y compromiso. Pero, sobre todo, trabajamos con el corazón."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POLITICAS (Grid de Tarjetas) -->
+    <section id="politicas" class="py-20 bg-slate-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-3xl font-bold mb-4">Nuestras Políticas</h2>
+                <div class="w-16 h-1 bg-star-red mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Politica 1 -->
+                <div class="bg-slate-800 p-8 rounded-lg border border-slate-700 hover:border-star-blue transition-colors fade-up">
+                    <i data-lucide="shield" class="w-10 h-10 text-star-blue mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Tratamiento de Datos</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        En cumplimiento de la Ley 1581 de 2012, protegemos su información personal con responsabilidad y ética.
+                    </p>
+                    <ul class="text-xs text-slate-500 list-disc ml-4 space-y-1">
+                        <li>Fines asistenciales y diagnósticos.</li>
+                        <li>Seguridad y confidencialidad.</li>
+                    </ul>
+                </div>
+
+                <!-- Politica 2 -->
+                <div class="bg-slate-800 p-8 rounded-lg border border-slate-700 hover:border-star-red transition-colors fade-up">
+                    <i data-lucide="award" class="w-10 h-10 text-star-red mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Política de Calidad</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Mejora continua para garantizar procesos confiables y humanizados, centrados en las necesidades del paciente.
+                    </p>
+                </div>
+
+                <!-- Politica 3 -->
+                <div class="bg-slate-800 p-8 rounded-lg border border-slate-700 hover:border-white transition-colors fade-up">
+                    <i data-lucide="camera-off" class="w-10 h-10 text-white mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Privacidad de Imagen</h3>
+                    <p class="text-slate-400 text-sm">
+                        Prohibida la toma de fotografías, vídeos o audio en las instalaciones sin consentimiento previo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-white border-t border-slate-100 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand / Logo Footer -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="mb-6">
+                        <!-- Reemplazar src con la URL real de tu logo de 1780x586 -->
+                        <img src="img/starmedica-logo.png" 
+                             alt="STARMEDICA S.A.S" 
+                             class="h-10 w-auto object-contain">
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-6">
+                        Institución prestadora de servicios de salud especializada en cardiología no invasiva.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-star-blue hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-star-red hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase text-sm tracking-wider">Contacto</h4>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-star-red shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800">Dirección</p>
+                                <p class="text-sm text-slate-500">Av. Roosvelt # 39-25<br>Edificio Centro Empresarial, Cali</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-star-blue shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800">Teléfono</p>
+                                <p class="text-sm text-slate-500">322 446 4014</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-star-blue shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800">Email</p>
+                                <p class="text-sm text-slate-500">contacto@starmedica.com.co</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase text-sm tracking-wider">Enlaces</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-star-blue">Directorio Médico</a></li>
+                        <li><a href="#" class="hover:text-star-blue">Aviso de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-star-blue">Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-8 text-center text-xs text-slate-400">
+                <p>&copy; 2024 STARMEDICA S.A.S. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Iconos
+        lucide.createIcons();
+
+        // Menú Móvil
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Header Shadow on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Slider
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        // Animations (Intersection Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

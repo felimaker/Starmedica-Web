@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARMEDICA | Clínica de Especialistas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    
+    <!-- Tailwind CSS Local -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="bg-star-dark text-white py-2 text-xs font-medium tracking-wide">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-6">
+                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-star-red"></i> Cali, Colombia</span>
+                <span class="hidden md:flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-star-blue"></i> Lun - Vie: 7am - 6pm</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-star-blue transition-colors">Ingresar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR PREMIUM -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Logo (Imagen 1780x586) -->
+            <a href="#" class="block w-48 lg:w-60 hover:opacity-80 transition-opacity">
+                <!-- Reemplaza src con tu URL real -->
+                <img src="img/logo.png" 
+                     alt="STARMEDICA" class="w-full h-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 font-bold text-sm text-slate-600">
+                <a href="#inicio" class="hover:text-star-blue transition-colors">Inicio</a>
+                <a href="#especialistas" class="hover:text-star-blue transition-colors">Especialistas</a>
+                <a href="#servicios" class="hover:text-star-blue transition-colors">Servicios</a>
+                <a href="#nosotros" class="hover:text-star-blue transition-colors">Clínica</a>
+                <a href="#contacto" class="btn-glow px-6 py-2.5 bg-star-blue text-white rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30 flex items-center gap-2">
+                    <i data-lucide="calendar-plus" class="w-4 h-4"></i> Cita Online
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-btn" class="lg:hidden text-slate-800 p-2">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl p-6 flex flex-col gap-4">
+            <a href="#inicio" class="font-bold text-slate-700 py-2 border-b border-slate-50">Inicio</a>
+            <a href="#especialistas" class="font-bold text-slate-700 py-2 border-b border-slate-50">Especialistas</a>
+            <a href="#servicios" class="font-bold text-slate-700 py-2 border-b border-slate-50">Servicios</a>
+            <a href="#contacto" class="font-bold text-star-red py-2">Agendar Cita</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Group Image) -->
+    <section id="inicio" class="relative pt-12 pb-24 lg:pt-32 lg:pb-32 overflow-hidden bg-slate-50">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-blue-100/50 to-transparent rounded-bl-[200px]"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-red-50/50 to-transparent rounded-tr-[200px]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="reveal-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-100 mb-8">
+                        <span class="flex h-3 w-3 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-star-red opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-star-red"></span>
+                        </span>
+                        <span class="text-xs font-bold text-slate-600 uppercase tracking-wider">Atención Prioritaria</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-bold text-star-dark leading-[1.1] mb-6">
+                        Medicina de <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-star-blue to-star-red">Alta Precisión.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-500 mb-10 leading-relaxed max-w-lg">
+                        En STARMEDICA combinamos la experiencia de nuestros especialistas con tecnología de vanguardia para cuidar su salud cardiovascular.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#especialistas" class="btn-glow px-8 py-4 bg-star-dark text-white rounded-xl font-bold text-center flex justify-center items-center gap-2 shadow-xl hover:shadow-2xl transition-all">
+                            Buscar Especialista <i data-lucide="search" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#servicios" class="px-8 py-4 bg-white text-star-dark border border-gray-200 rounded-xl font-bold text-center hover:border-star-blue hover:text-star-blue transition-colors">
+                            Ver Tratamientos
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Composition (Horizontal Group) -->
+                <div class="relative reveal-scale lg:h-[500px] flex items-center justify-center">
+                    <div class="relative w-full h-full">
+                        <!-- Main Image: Horizontal Group -->
+                        <img src="img/Starmedica-slide-1.jpg" 
+                             alt="Equipo Médico Starmedica" 
+                             class="rounded-[2rem] shadow-2xl object-cover w-full h-full border-8 border-white z-10 relative">
+                        
+                        <!-- Floating Card 1: Corazón Sano -->
+                        <div class="absolute -top-6 -left-6 lg:top-10 lg:-left-10 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-green-100 p-2 rounded-lg text-green-600">
+                                    <i data-lucide="activity" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-bold uppercase">Estado</p>
+                                    <p class="font-bold text-star-dark">Corazón Sano</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card 2: Años Exp -->
+                        <div class="absolute -bottom-6 -right-6 lg:bottom-10 lg:-right-5 bg-white p-5 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce" style="animation-duration: 4s;">
+                            <div class="flex items-center gap-4">
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-star-blue">20+</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase">Años Exp.</p>
+                                </div>
+                                <div class="h-8 w-px bg-gray-200"></div>
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-star-red">100%</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase">Calidad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPECIALISTAS (6 Profiles) -->
+    <section id="especialistas" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-star-blue font-bold tracking-widest text-xs uppercase mb-2 block">Nuestro Equipo</span>
+                <h2 class="text-4xl font-bold text-star-dark mb-4">Especialistas de Clase Mundial</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-star-red to-star-blue mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Template generado via JS para 6 especialistas -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS (Link a Detalle) -->
+    <section id="servicios" class="py-24 bg-gray-50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16 reveal-up">
+                <h2 class="text-3xl font-bold text-star-dark">Servicios Integrales</h2>
+                <p class="text-slate-500 mt-2">Diagnóstico y tratamiento avanzado. Clic para ver detalle.</p>
+            </div>
+
+            <!-- Grid de Servicios (se llena con JS) -->
+            <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- JS populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS / RESULTADOS (Grupo + Flotantes) -->
+    <section id="nosotros" class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
+                <!-- Imagen Grupal con Flotantes -->
+                <div class="lg:w-1/2 relative reveal-up">
+                    <img src="img/Starmedica-slide-2.jpg" 
+                         alt="Equipo de Trabajo" 
+                         class="rounded-[2rem] shadow-soft-xl w-full object-cover object-top-right h-[450px]" style="object-position: top right;">
+                    
+                    <!-- Floating Stat 1 -->
+                    <!-- <div class="absolute top-8 left-8 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg border border-white">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-100 text-star-blue p-2 rounded-full"><i data-lucide="users" class="w-5 h-5"></i></span>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase">Pacientes</p>
+                                <p class="font-bold text-star-dark text-lg">10k+</p>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Floating Stat 2 -->
+                    <div class="absolute bottom-8 right-8 bg-white/90 backdrop-blur p-4 rounded-xl shadow-lg border border-white">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-red-100 text-star-red p-2 rounded-full"><i data-lucide="award" class="w-5 h-5"></i></span>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase">Certificado</p>
+                                <p class="font-bold text-star-dark text-lg">ISO 9001</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:w-1/2 reveal-up">
+                    <h2 class="text-4xl font-bold text-star-dark mb-6">Comprometidos con tu <span class="text-star-red">Bienestar</span>.</h2>
+                    <div class="space-y-4 text-slate-600 leading-relaxed mb-8">
+                        <p><strong>STARMEDICA S.A.S.</strong> es una institución prestadora de servicios de salud especializada en cardiología no invasiva, fundada en Bogotá en el año 2012 y trasladada a la ciudad de Cali en 2013.</p>
+                        <p>Nos hemos consolidado como aliados estratégicos en los principales hospitales del Valle del Cauca. Nuestro objetivo es satisfacer las expectativas de nuestros usuarios con una atención humanizada.</p>
+                    </div>
+                    <a href="#contacto" class="btn-glow px-8 py-3 bg-star-dark text-white rounded-lg font-bold">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-star-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <img src="img/starmedica-logo.png" 
+                         alt="STARMEDICA Footer" class="w-48 mb-6 object-contain bg-white/10 p-2 rounded">
+                    <p class="text-sm text-slate-400 mb-6">
+                        Excelencia en diagnóstico cardiovascular. Tu salud en las mejores manos.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-star-blue transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-star-red transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Navegación</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Especialistas</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Directorio Médico</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <!-- Policies -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Legal</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Política de Datos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Derechos y Deberes</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Política de Calidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contacto</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-star-red shrink-0"></i>
+                            <span>Av. Roosvelt # 39-25<br>Edificio Centro Empresarial, Cali</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-star-blue shrink-0"></i>
+                            <span>322 446 4014</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-star-blue shrink-0"></i>
+                            <span>contacto@starmedica.com.co</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center text-xs text-slate-500">
+                &copy; 2024 STARMEDICA S.A.S. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL ESPECIALISTA -->
+    <div id="specialist-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
+            <button onclick="closeSpecModal()" class="absolute top-4 right-4 z-20 bg-white/50 hover:bg-white p-2 rounded-full transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="md:w-1/2 h-64 md:h-auto relative bg-slate-100">
+                <img id="modal-spec-img" src="" class="w-full h-full object-cover object-top" alt="Doctor">
+            </div>
+            <div class="md:w-1/2 p-8 md:p-12 overflow-y-auto">
+                <span id="modal-spec-role" class="text-star-blue font-bold tracking-widest text-xs uppercase mb-2 block">Cardiología</span>
+                <h2 id="modal-spec-name" class="text-3xl font-bold text-star-dark mb-4">Dr. Nombre Apellido</h2>
+                <div class="w-12 h-1 bg-star-red rounded-full mb-6"></div>
+                <p id="modal-spec-bio" class="text-slate-600 leading-relaxed mb-6">Biografía...</p>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-6">
+                    <h4 class="font-bold text-sm text-star-dark mb-2">Especialidades:</h4>
+                    <ul id="modal-spec-tags" class="flex flex-wrap gap-2">
+                        <!-- Tags -->
+                    </ul>
+                </div>
+                <button onclick="closeSpecModal(); window.location.href='#contacto'" class="w-full py-3 bg-star-dark text-white font-bold rounded-xl hover:bg-star-blue transition-colors">Solicitar Cita</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SERVICIO (SPA FULL SCREEN) -->
+    <div id="service-modal" class="modal-overlay fixed inset-0 z-[60] bg-white flex flex-col overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-white/95 backdrop-blur sticky top-0 z-10">
+            <div class="flex items-center gap-3">
+                <button onclick="closeServModal()" class="p-2 hover:bg-slate-100 rounded-full transition-colors"><i data-lucide="arrow-left" class="w-6 h-6 text-slate-700"></i></button>
+                <span class="font-bold text-slate-700">Detalle del Servicio</span>
+            </div>
+            <button onclick="closeServModal()" class="p-2 hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-full"><i data-lucide="x" class="w-6 h-6"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto bg-slate-50 p-6">
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100">
+                <div class="flex items-start gap-6 mb-8">
+                    <div id="modal-serv-icon" class="w-16 h-16 rounded-2xl bg-star-blue text-white flex items-center justify-center shrink-0"></div>
+                    <div>
+                        <span id="modal-serv-cups" class="inline-block px-3 py-1 bg-slate-100 text-slate-500 text-xs font-mono rounded mb-2">CUPS</span>
+                        <h2 id="modal-serv-title" class="text-3xl font-bold text-star-dark">Titulo</h2>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="font-bold text-lg text-star-dark mb-2">Descripción</h3>
+                        <p id="modal-serv-desc" class="text-slate-600 leading-relaxed"></p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-2xl">
+                            <h4 class="font-bold text-star-blue mb-2">Utilidad</h4>
+                            <p id="modal-serv-util" class="text-sm text-slate-700"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-2xl">
+                            <h4 class="font-bold text-slate-700 mb-2">Preparación</h4>
+                            <p id="modal-serv-prep" class="text-sm text-slate-600"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        // --- DATA ---
+        const specialists = [
+            { name: "Dr. Huberth Ruiz", role: "Cardiologo Ecocardiografista", img: "img/1.jpg", bio: "Especialista con más de 15 años de experiencia en el manejo de hipertensión y enfermedades coronarias.", tags: ["Hipertensión", "Riesgo Cardiovascular"] },
+            { name: "Dra. Ketherine Ruiz", role: "Cardiologa Ecocardiografista", img: "img/2.jpg", bio: "Experta en el diagnóstico y tratamiento de cardiopatías congénitas.", tags: ["Pediatría", "Congénitas"] },
+            { name: "Dr. Andrés Villa", role: "Electrofisiología", img: "img/3.jpg", bio: "Subespecialista en el estudio y tratamiento de arritmias cardíacas complejas y marcapasos.", tags: ["Arritmias", "Marcapasos"] },
+            { name: "Dra. Camila Torres", role: "Ecocardiografía", img: "img/4.jpg", bio: "Líder en imágenes diagnósticas cardíacas avanzadas, incluyendo ecocardiograma transesofágico.", tags: ["Imágenes", "Diagnóstico"] },
+            { name: "Dr. Jorge Ramírez", role: "Rehabilitación", img: "img/5.jpg", bio: "Enfocado en la recuperación funcional de pacientes post-infarto y cirugía cardíaca.", tags: ["Rehabilitación", "Post-quirúrgico"] },
+            { name: "Dra. Elena Ruiz", role: "Falla Cardíaca", img: "img/6.jpg", bio: "Dedicada al manejo integral de pacientes con insuficiencia cardíaca avanzada.", tags: ["Insuficiencia", "Clínica de Falla"] }
+        ];
+
+        const services = [
+            { id: 'adulto', title: 'Consulta Adulto', cups: '890328', icon: 'heart-pulse', desc: 'Evaluación integral cardiovascular.', util: 'Detección de enfermedades.', prep: 'Ninguna.' },
+            { id: 'pedia', title: 'Cardiología Pediátrica', cups: '890329', icon: 'baby', desc: 'Atención para niños y adolescentes.', util: 'Soplos, desmayos.', prep: 'Traer carnet.' },
+            { id: 'electro', title: 'Electrocardiograma', cups: '895100', icon: 'activity', desc: 'Registro eléctrico del corazón.', util: 'Arritmias.', prep: 'Sin cremas.' },
+            { id: 'holter', title: 'Holter 24H', cups: '895001', icon: 'timer', desc: 'Monitoreo de ritmo 24h.', util: 'Palpitaciones.', prep: 'Ir bañado.' },
+            { id: 'mapa', title: 'MAPA', cups: '895004', icon: 'gauge', desc: 'Monitoreo presión 24h.', util: 'Hipertensión.', prep: 'Ropa holgada.' },
+            { id: 'eco', title: 'Ecocardiograma', cups: '881202', icon: 'waves', desc: 'Ultrasonido del corazón.', util: 'Estructura cardíaca.', prep: 'Ninguna.' },
+            { id: 'stress', title: 'Eco Stress', cups: '881205', icon: 'zap', desc: 'Eco con ejercicio/fármaco.', util: 'Isquemia.', prep: 'Ayuno 4h, ropa deporte.' },
+            { id: 'te', title: 'Transesofágico', cups: '891210', icon: 'search', desc: 'Eco vía esofágica.', util: 'Trombos, válvulas.', prep: 'Ayuno 6-8h, acompañante.' },
+            { id: 'inter', title: 'Interconsulta', cups: 'HOSP', icon: 'stethoscope', desc: 'Valoración intrahospitalaria.', util: 'Apoyo diagnóstico.', prep: 'Según clínica.' },
+            { id: 'esfuerzo', title: 'Prueba Esfuerzo', cups: '894102', icon: 'trending-up', desc: 'Electro en banda rodante.', util: 'Capacidad física.', prep: 'Ropa deporte, desayuno ligero.' }
+        ];
+
+        // --- RENDER SPECIALISTS ---
+        const specGrid = document.querySelector('#especialistas .grid');
+        specialists.forEach((doc, index) => {
+            const card = document.createElement('div');
+            card.className = `doc-card rounded-2xl p-4 text-center group cursor-pointer reveal-up`;
+            card.style.transitionDelay = `${index * 50}ms`;
+            card.onclick = () => openSpecModal(index);
+            card.innerHTML = `
+                <div class="doc-img-wrapper relative mb-4 rounded-xl overflow-hidden h-64 w-full bg-gray-100">
+                    <img src="${doc.img}" class="w-full h-full object-cover object-top" alt="${doc.name}">
+                </div>
+                <h3 class="text-lg font-bold text-star-dark group-hover:text-star-blue transition-colors">${doc.name}</h3>
+                <p class="text-sm text-star-red font-medium mb-3">${doc.role}</p>
+                <button class="text-xs font-bold text-slate-400 uppercase tracking-wider group-hover:text-star-blue">Ver Perfil</button>
+            `;
+            specGrid.appendChild(card);
+        });
+
+        // --- RENDER SERVICES ---
+        const servGrid = document.querySelector('#services-grid');
+        services.forEach((s, index) => {
+            const card = document.createElement('div');
+            card.className = `bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-all cursor-pointer group reveal-up`;
+            card.onclick = () => openServModal(index);
+            card.innerHTML = `
+                <div class="flex justify-between mb-4">
+                    <div class="p-3 bg-blue-50 text-star-blue rounded-xl group-hover:bg-star-blue group-hover:text-white transition-colors"><i data-lucide="${s.icon}"></i></div>
+                    <span class="text-[10px] font-mono text-slate-400 bg-slate-50 px-2 py-1 rounded h-fit">${s.cups}</span>
+                </div>
+                <h3 class="font-bold text-lg text-star-dark mb-2">${s.title}</h3>
+                <p class="text-xs text-slate-500 line-clamp-2">${s.desc}</p>
+            `;
+            servGrid.appendChild(card);
+        });
+        
+        lucide.createIcons();
+
+        // --- MODAL LOGIC ---
+        function openSpecModal(index) {
+            const doc = specialists[index];
+            document.getElementById('modal-spec-img').src = doc.img;
+            document.getElementById('modal-spec-role').innerText = doc.role;
+            document.getElementById('modal-spec-name').innerText = doc.name;
+            document.getElementById('modal-spec-bio').innerText = doc.bio;
+            
+            const tagContainer = document.getElementById('modal-spec-tags');
+            tagContainer.innerHTML = doc.tags.map(t => `<li class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600">${t}</li>`).join('');
+            
+            document.getElementById('specialist-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSpecModal() {
+            document.getElementById('specialist-modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function openServModal(index) {
+            const s = services[index];
+            document.getElementById('modal-serv-title').innerText = s.title;
+            document.getElementById('modal-serv-cups').innerText = 'CUPS: ' + s.cups;
+            document.getElementById('modal-serv-desc').innerText = s.desc;
+            document.getElementById('modal-serv-util').innerText = s.util;
+            document.getElementById('modal-serv-prep').innerText = s.prep;
+            document.getElementById('modal-serv-icon').innerHTML = `<i data-lucide="${s.icon}" class="w-8 h-8"></i>`;
+            lucide.createIcons();
+            
+            document.getElementById('service-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeServModal() {
+            document.getElementById('service-modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // --- GENERAL UI ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-up, .reveal-scale').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

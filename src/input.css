@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos personalizados */
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #ffffff;
+    color: #334155;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* --- ANIMACIONES --- */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease-out;
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- CARD ESPECIALISTA --- */
+.doc-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: white;
+    border: 1px solid #f1f5f9;
+}
+
+.doc-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -5px rgba(0,0,0,0.1);
+    border-color: #252dff;
+}
+
+.doc-img-wrapper img {
+    transition: transform 0.5s ease;
+}
+
+.doc-card:hover .doc-img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* --- BUTTON GLOW --- */
+.btn-glow {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn-glow:hover::after {
+    left: 100%;
+}
+
+/* --- MODALS --- */
+.modal-overlay {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.open .modal-content {
+    transform: scale(1);
+}
+
+/* === Estilos específicos index2.html === */
+
+/* --- SLIDER PROFESIONAL --- */
+.slider-container {
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    overflow: hidden;
+    background-color: #0f172a;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1s ease-in-out, transform 6s ease-out;
+    background-size: cover;
+    background-position: top right;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Overlay Gradiente Profesional */
+.slider-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.9) 0%, 
+        rgba(15, 23, 42, 0.7) 40%, 
+        rgba(15, 23, 42, 0.1) 100%);
+    z-index: 10;
+}
+
+/* Animaciones UI */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botón Primario con Hover sólido */
+.btn-primary {
+    background-color: #cd001b;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px 0 rgba(205, 0, 27, 0.39);
+}
+
+.btn-primary:hover {
+    background-color: #a40016;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(205, 0, 27, 0.23);
+}
+
+/* Card Hover Effect */
+.service-card {
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-bottom-color: #252dff;
+}
