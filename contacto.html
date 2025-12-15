@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | STARMEDICA</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    
+    <!-- Tailwind CSS Local -->
+    <link rel="stylesheet" href="dist/output.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="bg-star-dark text-white py-2 text-xs font-medium tracking-wide">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-6">
+                <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-star-red"></i> Cali, Colombia</span>
+                <span class="hidden md:flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-star-blue"></i> Lun - Vie: 7am - 6pm</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="login.html" class="hover:text-star-blue transition-colors">Ingresar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR PREMIUM -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="block w-48 lg:w-60 hover:opacity-80 transition-opacity">
+                <img src="img/logo.png" alt="STARMEDICA" class="w-full h-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 font-bold text-sm text-slate-600">
+                <a href="index.html#inicio" class="hover:text-star-blue transition-colors">Inicio</a>
+                <a href="index.html#especialistas" class="hover:text-star-blue transition-colors">Especialistas</a>
+                <a href="index.html#servicios" class="hover:text-star-blue transition-colors">Servicios</a>
+                <a href="index.html#nosotros" class="hover:text-star-blue transition-colors">Clínica</a>
+                <a href="contacto.html" class="btn-glow px-6 py-2.5 bg-star-blue text-white rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/30 flex items-center gap-2">
+                    <i data-lucide="calendar-plus" class="w-4 h-4"></i> Cita Online
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menu-btn" class="lg:hidden text-slate-800 p-2">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl p-6 flex flex-col gap-4">
+            <a href="index.html#inicio" class="font-bold text-slate-700 py-2 border-b border-slate-50">Inicio</a>
+            <a href="index.html#especialistas" class="font-bold text-slate-700 py-2 border-b border-slate-50">Especialistas</a>
+            <a href="index.html#servicios" class="font-bold text-slate-700 py-2 border-b border-slate-50">Servicios</a>
+            <a href="contacto.html" class="font-bold text-star-red py-2">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION CONTACTO -->
+    <section class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-slate-50">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-blue-100/50 to-transparent rounded-bl-[200px]"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-red-50/50 to-transparent rounded-tr-[200px]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-star-blue font-bold tracking-widest text-xs uppercase mb-2 block">Estamos aquí para ti</span>
+                <h1 class="text-5xl lg:text-6xl font-bold text-star-dark leading-[1.1] mb-4">
+                    Contáctanos
+                </h1>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+                    Resuelve tus dudas y agenda tu cita con uno de nuestros especialistas cardiovasculares
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO CONTENT -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <!-- FORMULARIO -->
+                <div class="reveal-up">
+                    <div class="bg-white rounded-3xl p-8 lg:p-10 border border-gray-100 shadow-lg">
+                        <h2 class="text-3xl font-bold text-star-dark mb-2">Envíanos un mensaje</h2>
+                        <p class="text-slate-500 mb-8">Llena el formulario y nos pondremos en contacto contigo en el menor tiempo posible</p>
+                        
+                        <form id="contact-form" class="space-y-6">
+                            <!-- Nombre -->
+                            <div>
+                                <label for="nombre" class="block text-sm font-bold text-slate-700 mb-2">Nombre Completo</label>
+                                <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-star-blue focus:ring-2 focus:ring-star-blue/20 transition-all" placeholder="Tu nombre">
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-slate-700 mb-2">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-star-blue focus:ring-2 focus:ring-star-blue/20 transition-all" placeholder="tu@correo.com">
+                            </div>
+
+                            <!-- Teléfono -->
+                            <div>
+                                <label for="telefono" class="block text-sm font-bold text-slate-700 mb-2">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-star-blue focus:ring-2 focus:ring-star-blue/20 transition-all" placeholder="300 123 4567">
+                            </div>
+
+                            <!-- Asunto -->
+                            <div>
+                                <label for="asunto" class="block text-sm font-bold text-slate-700 mb-2">Asunto</label>
+                                <select id="asunto" name="asunto" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-star-blue focus:ring-2 focus:ring-star-blue/20 transition-all">
+                                    <option value="">Selecciona un asunto</option>
+                                    <option value="cita">Agendar Cita</option>
+                                    <option value="consulta">Consulta Médica</option>
+                                    <option value="resultado">Resultados de Exámenes</option>
+                                    <option value="reclamo">Reclamo o Sugerencia</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- Mensaje -->
+                            <div>
+                                <label for="mensaje" class="block text-sm font-bold text-slate-700 mb-2">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-star-blue focus:ring-2 focus:ring-star-blue/20 transition-all resize-none" placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="terms" name="terms" required class="w-4 h-4 mt-1 accent-star-blue">
+                                <label for="terms" class="text-sm text-slate-600">
+                                    Acepto la política de privacidad y tratamiento de datos
+                                </label>
+                            </div>
+
+                            <!-- Botón Enviar -->
+                            <button type="submit" class="btn-glow w-full py-4 bg-star-dark text-white font-bold rounded-xl hover:bg-star-blue transition-all shadow-lg">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- INFORMACIÓN CONTACTO -->
+                <div class="reveal-up" style="transition-delay: 100ms;">
+                    <h2 class="text-3xl font-bold text-star-dark mb-8">Información de Contacto</h2>
+
+                    <!-- Tarjeta Ubicación -->
+                    <div class="bg-gradient-to-br from-star-blue/10 to-blue-50 p-8 rounded-2xl border border-star-blue/20 mb-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-star-blue text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-star-dark mb-2">Dirección</h3>
+                                <p class="text-slate-600">Av. Roosvelt # 39-25<br>Edificio Centro Empresarial<br>Cali, Valle del Cauca, Colombia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Teléfono -->
+                    <div class="bg-gradient-to-br from-star-red/10 to-red-50 p-8 rounded-2xl border border-star-red/20 mb-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-star-red text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-star-dark mb-2">Teléfono</h3>
+                                <p class="text-slate-600 font-medium">
+                                    <a href="tel:3224464014" class="hover:text-star-blue transition-colors">322 446 4014</a>
+                                </p>
+                                <p class="text-xs text-slate-500 mt-2">Disponible de lunes a viernes, 7am - 6pm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Email -->
+                    <div class="bg-gradient-to-br from-slate-100 to-gray-50 p-8 rounded-2xl border border-gray-200 mb-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-400 text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-star-dark mb-2">Correo Electrónico</h3>
+                                <p class="text-slate-600">
+                                    <a href="mailto:contacto@starmedica.com.co" class="hover:text-star-blue transition-colors">contacto@starmedica.com.co</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Horario -->
+                    <div class="bg-gradient-to-br from-emerald-100/50 to-emerald-50 p-8 rounded-2xl border border-emerald-200 mb-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-star-dark mb-3">Horario de Atención</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex justify-between"><span class="text-slate-700 font-medium">Lunes - Viernes:</span> <span class="text-slate-600">7:00 am - 6:00 pm</span></li>
+                                    <li class="flex justify-between"><span class="text-slate-700 font-medium">Sábado:</span> <span class="text-slate-600">8:00 am - 2:00 pm</span></li>
+                                    <li class="flex justify-between"><span class="text-slate-700 font-medium">Domingo:</span> <span class="text-slate-600">Cerrado</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociales -->
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100">
+                        <h3 class="font-bold text-lg text-star-dark mb-4">Síguenos</h3>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-blue-100 text-star-blue flex items-center justify-center hover:bg-star-blue hover:text-white transition-all">
+                                <i data-lucide="facebook" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-red-100 text-star-red flex items-center justify-center hover:bg-star-red hover:text-white transition-all">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-600 hover:text-white transition-all">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-star-dark text-white pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <img src="img/starmedica-logo.png" alt="STARMEDICA Footer" class="w-48 mb-6 object-contain bg-white/10 p-2 rounded">
+                    <p class="text-sm text-slate-400 mb-6">
+                        Excelencia en diagnóstico cardiovascular. Tu salud en las mejores manos.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-star-blue transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-star-red transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Navegación</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="index.html#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="index.html#especialistas" class="hover:text-white transition-colors">Especialistas</a></li>
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="index.html#nosotros" class="hover:text-white transition-colors">Clínica</a></li>
+                    </ul>
+                </div>
+
+                <!-- Policies -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Legal</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="politica-datos.html" class="hover:text-white transition-colors">Política de Datos</a></li>
+                        <li><a href="derechos-deberes.html" class="hover:text-white transition-colors">Derechos y Deberes</a></li>
+                        <li><a href="politica-calidad.html" class="hover:text-white transition-colors">Política de Calidad</a></li>
+                        <li><a href="privacidad-seguridad.html" class="hover:text-white transition-colors">Privacidad y Seguridad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Contacto</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-star-red shrink-0 mt-0.5"></i>
+                            <span>Av. Roosvelt # 39-25<br>Edificio Centro Empresarial, Cali</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-star-blue shrink-0"></i>
+                            <span>322 446 4014</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-star-blue shrink-0"></i>
+                            <span>contacto@starmedica.com.co</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 text-center text-xs text-slate-500">
+                &copy; 2024 STARMEDICA S.A.S. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL ÉXITO -->
+    <div id="success-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
+            <div class="mb-6">
+                <div class="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="check-circle" class="w-12 h-12 text-emerald-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-star-dark mb-2">¡Mensaje Enviado!</h2>
+                <p class="text-slate-600">
+                    Gracias por contactarnos. Hemos recibido tu mensaje y nos pondremos en contacto pronto.
+                </p>
+            </div>
+            <div class="space-y-3">
+                <p class="text-sm text-slate-500">
+                    Revisa tu correo para más detalles. Si no recibes nada en los próximos minutos, verifica tu carpeta de spam.
+                </p>
+                <button onclick="closeSuccessModal()" class="w-full py-3 bg-star-dark text-white font-bold rounded-xl hover:bg-star-blue transition-all">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        // Manejo del formulario
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar modal de éxito sin enviar datos
+            document.getElementById('success-modal').classList.remove('hidden');
+            
+            // Limpiar formulario
+            this.reset();
+        });
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Observador para animaciones reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
