@@ -11,6 +11,31 @@
     <!-- Tailwind CSS Local -->
     <link rel="stylesheet" href="dist/output.css">
     
+    <!-- Estilos adicionales para modales -->
+    <style>
+        .modal-overlay {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transition: opacity 0.3s ease !important;
+            visibility: hidden !important;
+        }
+
+        .modal-overlay.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+    </style>
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
@@ -436,6 +461,16 @@
             console.log('Modal classes before:', modal.className);
             
             modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSpecModal() {
+            console.log('closeSpecModal called');
+            const modal = document.getElementById('specialist-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
         function openServModal(index) {
             console.log('openServModal called with index:', index);
             const s = services[index];
@@ -459,24 +494,12 @@
             
             document.body.style.overflow = 'hidden';
         }
+        
         function closeServModal() {
             console.log('closeServModal called');
             const modal = document.getElementById('service-modal');
             modal.classList.remove('show');
             console.log('Service modal closed, classes:', modal.className);
-            document.body.style.overflow = '';
-        }   document.getElementById('modal-serv-cups').innerText = 'CUPS: ' + s.cups;
-            document.getElementById('modal-serv-desc').innerText = s.desc;
-            document.getElementById('modal-serv-util').innerText = s.util;
-            document.getElementById('modal-serv-prep').innerText = s.prep;
-            document.getElementById('modal-serv-icon').innerHTML = `<i data-lucide="${s.icon}" class="w-8 h-8"></i>`;
-            lucide.createIcons();
-            
-            document.getElementById('service-modal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeServModal() {
-            document.getElementById('service-modal').classList.remove('show');
             document.body.style.overflow = '';
         }
 
