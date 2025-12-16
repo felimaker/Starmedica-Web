@@ -85,11 +85,15 @@ h1, h2, h3, h4 {
 
 /* --- MODALS --- */
 .modal-overlay {
-    transition: opacity 0.3s ease;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
 }
 
-.modal-overlay.hidden {
-    display: none !important;
+.modal-overlay.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
 }
 
 .modal-content {
@@ -97,7 +101,7 @@ h1, h2, h3, h4 {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-overlay:not(.hidden) .modal-content {
+.modal-overlay.show .modal-content {
     transform: scale(1);
 }
 

@@ -178,7 +178,7 @@
     </section>
 
     <!-- MODAL RECUPERAR CONTRASEÑA -->
-    <div id="recovery-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div id="recovery-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl">
             <div class="bg-gradient-to-r from-star-blue to-star-red p-6 text-white flex items-center justify-between">
                 <h2 class="text-2xl font-bold">Recuperar Contraseña</h2>
@@ -230,7 +230,7 @@
     </div>
 
     <!-- MODAL LOGIN ERROR -->
-    <div id="login-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div id="login-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
@@ -248,7 +248,7 @@
     </div>
 
     <!-- MODAL RECUPERACIÓN ERROR -->
-    <div id="recovery-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div id="recovery-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
@@ -271,6 +271,7 @@
 
         // Toggle Password Visibility
         function togglePassword() {
+            console.log('togglePassword called');
             const passwordInput = document.getElementById('password');
             const eyeIcon = document.getElementById('eye-icon');
             
@@ -286,37 +287,80 @@
 
         // Login Form
         document.getElementById('login-form').addEventListener('submit', function(e) {
+            console.log('Login form submitted');
             e.preventDefault();
+            const modal = document.getElementById('login-error-modal');
+            console.log('Login error modal element:', modal);
+            console.log('Modal classes before:', modal.className);
+            
             // Simulación de validación: siempre muestra credenciales inválidas
-            document.getElementById('login-error-modal').classList.remove('hidden');
+            modal.classList.add('show');
+            console.log('Modal classes after add show:', modal.className);
+            console.log('Modal display:', window.getComputedStyle(modal).display);
+            console.log('Modal opacity:', window.getComputedStyle(modal).opacity);
+            console.log('Modal visibility:', window.getComputedStyle(modal).visibility);
+            
+            // Forzar reflow para asegurar que se apliquen los estilos
+            void modal.offsetHeight;
+            console.log('Modal opacity after reflow:', window.getComputedStyle(modal).opacity);
+            
             this.reset();
         });
 
         function closeLoginError() {
-            document.getElementById('login-error-modal').classList.add('hidden');
+            console.log('closeLoginError called');
+            const modal = document.getElementById('login-error-modal');
+            modal.classList.remove('show');
+            console.log('Modal show removed, classes:', modal.className);
         }
 
         // Recovery Modal Functions
         function openRecoveryModal() {
-            document.getElementById('recovery-modal').classList.remove('hidden');
+            console.log('openRecoveryModal called');
+            const modal = document.getElementById('recovery-modal');
+            console.log('Recovery modal element:', modal);
+            console.log('Modal classes before:', modal.className);
+            
+            modal.classList.add('show');
+            console.log('Modal classes after add show:', modal.className);
+            console.log('Modal display:', window.getComputedStyle(modal).display);
         }
 
         function closeRecoveryModal() {
-            document.getElementById('recovery-modal').classList.add('hidden');
+            console.log('closeRecoveryModal called');
+            const modal = document.getElementById('recovery-modal');
+            modal.classList.remove('show');
+            console.log('Recovery modal show removed, classes:', modal.className);
             document.getElementById('recovery-form').reset();
         }
 
         // Recovery Form
         document.getElementById('recovery-form').addEventListener('submit', function(e) {
+            console.log('Recovery form submitted');
             e.preventDefault();
+            
+            const recoveryModal = document.getElementById('recovery-modal');
+            const errorModal = document.getElementById('recovery-error-modal');
+            
+            console.log('Recovery modal:', recoveryModal);
+            console.log('Error modal:', errorModal);
+            
             // Simulación: siempre correo no encontrado
-            document.getElementById('recovery-modal').classList.add('hidden');
-            document.getElementById('recovery-error-modal').classList.remove('hidden');
+            recoveryModal.classList.remove('show');
+            console.log('Recovery modal show removed, classes:', recoveryModal.className);
+            
+            errorModal.classList.add('show');
+            console.log('Error modal show added, classes:', errorModal.className);
+            console.log('Error modal display:', window.getComputedStyle(errorModal).display);
+            
             this.reset();
         });
 
         function closeRecoveryError() {
-            document.getElementById('recovery-error-modal').classList.add('hidden');
+            console.log('closeRecoveryError called');
+            const modal = document.getElementById('recovery-error-modal');
+            modal.classList.remove('show');
+            console.log('Recovery error modal show removed, classes:', modal.className);
         }
 
         // Observador para animaciones reveal

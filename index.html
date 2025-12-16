@@ -293,7 +293,7 @@
     </footer>
 
     <!-- MODAL ESPECIALISTA -->
-    <div id="specialist-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div id="specialist-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="modal-content bg-white rounded-3xl w-full max-w-4xl overflow-hidden shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
             <button onclick="closeSpecModal()" class="absolute top-4 right-4 z-20 bg-white/50 hover:bg-white p-2 rounded-full transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             <div class="md:w-1/2 h-64 md:h-auto relative bg-slate-100">
@@ -316,7 +316,7 @@
     </div>
 
     <!-- MODAL SERVICIO (SPA FULL SCREEN) -->
-    <div id="service-modal" class="modal-overlay fixed inset-0 z-[60] bg-white flex flex-col overflow-hidden hidden">
+    <div id="service-modal" class="modal-overlay fixed inset-0 z-[60] bg-white flex flex-col overflow-hidden">
         <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-white/95 backdrop-blur sticky top-0 z-10">
             <div class="flex items-center gap-3">
                 <button onclick="closeServModal()" class="p-2 hover:bg-slate-100 rounded-full transition-colors"><i data-lucide="arrow-left" class="w-6 h-6 text-slate-700"></i></button>
@@ -419,7 +419,10 @@
 
         // --- MODAL LOGIC ---
         function openSpecModal(index) {
+            console.log('openSpecModal called with index:', index);
             const doc = specialists[index];
+            console.log('Doctor data:', doc);
+            
             document.getElementById('modal-spec-img').src = doc.img;
             document.getElementById('modal-spec-role').innerText = doc.role;
             document.getElementById('modal-spec-name').innerText = doc.name;
@@ -428,16 +431,16 @@
             const tagContainer = document.getElementById('modal-spec-tags');
             tagContainer.innerHTML = doc.tags.map(t => `<li class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600">${t}</li>`).join('');
             
-            document.getElementById('specialist-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeSpecModal() {
-            document.getElementById('specialist-modal').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
+            const modal = document.getElementById('specialist-modal');
+            console.log('Modal element:', modal);
+            console.log('Modal classes before:', modal.className);
+            
+            modal.classList.add('show');
         function openServModal(index) {
+            console.log('openServModal called with index:', index);
             const s = services[index];
+            console.log('Service data:', s);
+            
             document.getElementById('modal-serv-title').innerText = s.title;
             document.getElementById('modal-serv-cups').innerText = 'CUPS: ' + s.cups;
             document.getElementById('modal-serv-desc').innerText = s.desc;
@@ -446,11 +449,34 @@
             document.getElementById('modal-serv-icon').innerHTML = `<i data-lucide="${s.icon}" class="w-8 h-8"></i>`;
             lucide.createIcons();
             
-            document.getElementById('service-modal').classList.remove('hidden');
+            const modal = document.getElementById('service-modal');
+            console.log('Service modal element:', modal);
+            console.log('Service modal classes before:', modal.className);
+            
+            modal.classList.add('show');
+            console.log('Service modal classes after:', modal.className);
+            console.log('Service modal display:', window.getComputedStyle(modal).display);
+            
             document.body.style.overflow = 'hidden';
         }
         function closeServModal() {
-            document.getElementById('service-modal').classList.add('hidden');
+            console.log('closeServModal called');
+            const modal = document.getElementById('service-modal');
+            modal.classList.remove('show');
+            console.log('Service modal closed, classes:', modal.className);
+            document.body.style.overflow = '';
+        }   document.getElementById('modal-serv-cups').innerText = 'CUPS: ' + s.cups;
+            document.getElementById('modal-serv-desc').innerText = s.desc;
+            document.getElementById('modal-serv-util').innerText = s.util;
+            document.getElementById('modal-serv-prep').innerText = s.prep;
+            document.getElementById('modal-serv-icon').innerHTML = `<i data-lucide="${s.icon}" class="w-8 h-8"></i>`;
+            lucide.createIcons();
+            
+            document.getElementById('service-modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeServModal() {
+            document.getElementById('service-modal').classList.remove('show');
             document.body.style.overflow = '';
         }
 
