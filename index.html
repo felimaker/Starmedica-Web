@@ -49,7 +49,7 @@
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex gap-6">
                 <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3 h-3 text-star-red"></i> Cali, Colombia</span>
-                <span class="hidden md:flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-star-blue"></i> Lun - Vie: 7am - 6pm</span>
+                <span class="hidden md:flex items-center gap-2"><i data-lucide="clock" class="w-3 h-3 text-star-blue"></i> Lun - Vie: 8am - 6pm</span>
             </div>
             <div class="flex gap-4">
                 <a href="login.html" class="hover:text-star-blue transition-colors">Ingresar</a>
@@ -90,7 +90,7 @@
             <a href="#especialistas" class="font-bold text-slate-700 py-2 border-b border-slate-50">Especialistas</a>
             <a href="#servicios" class="font-bold text-slate-700 py-2 border-b border-slate-50">Servicios</a>
             <a href="login.html" class="font-bold text-slate-700 py-2 border-b border-slate-50">Ingresar</a>
-            <a href="contacto.html" class="font-bold text-star-red py-2">Agendar Cita</a>
+            <a href="contacto.html" class="font-bold text-star-red py-2">Contacto</a>
         </div>
     </nav>
 
@@ -246,7 +246,7 @@
                         <p><strong>STARMEDICA S.A.S.</strong> es una institución prestadora de servicios de salud especializada en cardiología no invasiva, fundada en Bogotá en el año 2012 y trasladada a la ciudad de Cali en 2013.</p>
                         <p>Nos hemos consolidado como aliados estratégicos en los principales hospitales del Valle del Cauca. Nuestro objetivo es satisfacer las expectativas de nuestros usuarios con una atención humanizada.</p>
                     </div>
-                    <a href="#contacto" class="btn-glow px-8 py-3 bg-star-dark text-white rounded-lg font-bold">Contactar</a>
+                    <a href="contacto.html" class="btn-glow px-8 py-3 bg-star-dark text-white rounded-lg font-bold">Contactar</a>
                 </div>
             </div>
         </div>
@@ -335,7 +335,7 @@
                         <!-- Tags -->
                     </ul>
                 </div>
-                <button onclick="closeSpecModal(); window.location.href='#contacto'" class="w-full py-3 bg-star-dark text-white font-bold rounded-xl hover:bg-star-blue transition-colors">Solicitar Cita</button>
+                <button onclick="closeSpecModal(); window.location.href='contacto.html'" class="w-full py-3 bg-star-dark text-white font-bold rounded-xl hover:bg-star-blue transition-colors">Solicitar Cita</button>
             </div>
         </div>
     </div>
@@ -384,7 +384,7 @@
 
         // --- DATA ---
         const specialists = [
-            { name: "Dr. Huberth Ruiz", role: "Cardiologo Ecocardiografista", img: "img/1.jpg", bio: "Especialista con más de 15 años de experiencia en el manejo de hipertensión y enfermedades coronarias.", tags: ["Hipertensión", "Riesgo Cardiovascular"] },
+            { name: "Dr. Huberth Ruiz", role: "Cardiologo Ecocardiografista", img: "img/1.jpg", bio: "Especialista con más de 25 años de experiencia en el manejo de hipertensión y enfermedades coronarias.", tags: ["Hipertensión", "Riesgo Cardiovascular"] },
             { name: "Dra. Ketherine Ruiz", role: "Cardiologa Ecocardiografista", img: "img/2.jpg", bio: "Experta en el diagnóstico y tratamiento de cardiopatías congénitas.", tags: ["Pediatría", "Congénitas"] },
             { name: "Dr. Diego Carreño", role: "Electrofisiología", img: "img/3.jpg", bio: "Subespecialista en el estudio y tratamiento de arritmias cardíacas complejas y marcapasos.", tags: ["Arritmias", "Marcapasos"] },
             { name: "Dra. Jorge Gualteros", role: "Ecocardiografía", img: "img/4.jpg", bio: "Líder en imágenes diagnósticas cardíacas avanzadas, incluyendo ecocardiograma transesofágico.", tags: ["Imágenes", "Diagnóstico"] },

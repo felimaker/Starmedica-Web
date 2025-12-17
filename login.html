@@ -178,7 +178,7 @@
     </section>
 
     <!-- MODAL RECUPERAR CONTRASEÑA -->
-    <div id="recovery-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="recovery-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" style="opacity: 0; visibility: hidden; pointer-events: none;">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl">
             <div class="bg-gradient-to-r from-star-blue to-star-red p-6 text-white flex items-center justify-between">
                 <h2 class="text-2xl font-bold">Recuperar Contraseña</h2>
@@ -230,7 +230,7 @@
     </div>
 
     <!-- MODAL LOGIN ERROR -->
-    <div id="login-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="login-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" style="opacity: 0; visibility: hidden; pointer-events: none;">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
@@ -248,7 +248,7 @@
     </div>
 
     <!-- MODAL RECUPERACIÓN ERROR -->
-    <div id="recovery-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="recovery-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" style="opacity: 0; visibility: hidden; pointer-events: none;">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
@@ -287,80 +287,154 @@
 
         // Login Form
         document.getElementById('login-form').addEventListener('submit', function(e) {
-            console.log('Login form submitted');
+            console.log('=== LOGIN FORM SUBMISSION DEBUG ===');
             e.preventDefault();
             const modal = document.getElementById('login-error-modal');
-            console.log('Login error modal element:', modal);
-            console.log('Modal classes before:', modal.className);
+            console.log('1. Modal element found:', !!modal);
+            console.log('2. Modal classes before:', modal.className);
+            console.log('3. Modal computed style before:', {
+                display: window.getComputedStyle(modal).display,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility,
+                zIndex: window.getComputedStyle(modal).zIndex
+            });
+            
+            // Check if CSS is loaded
+            const modalStyles = window.getComputedStyle(modal);
+            console.log('4. Modal CSS properties:', {
+                hasImportantOpacity: modalStyles.getPropertyValue('opacity').includes('!important'),
+                hasImportantVisibility: modalStyles.getPropertyValue('visibility').includes('!important'),
+                transition: modalStyles.transition
+            });
             
             // Simulación de validación: siempre muestra credenciales inválidas
             modal.classList.add('show');
-            console.log('Modal classes after add show:', modal.className);
-            console.log('Modal display:', window.getComputedStyle(modal).display);
-            console.log('Modal opacity:', window.getComputedStyle(modal).opacity);
-            console.log('Modal visibility:', window.getComputedStyle(modal).visibility);
+            console.log('5. Modal classes after add show:', modal.className);
+            console.log('6. Modal computed style after show:', {
+                display: window.getComputedStyle(modal).display,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility,
+                zIndex: window.getComputedStyle(modal).zIndex
+            });
             
             // Forzar reflow para asegurar que se apliquen los estilos
             void modal.offsetHeight;
-            console.log('Modal opacity after reflow:', window.getComputedStyle(modal).opacity);
+            console.log('7. Modal opacity after reflow:', window.getComputedStyle(modal).opacity);
+            
+            // Check if show class is being applied correctly
+            const showRule = Array.from(document.styleSheets).flatMap(sheet =>
+                Array.from(sheet.cssRules).filter(rule =>
+                    rule.selectorText && rule.selectorText.includes('.modal-overlay.show')
+                )
+            );
+            console.log('8. CSS rules for .modal-overlay.show:', showRule);
             
             this.reset();
         });
 
         function closeLoginError() {
-            console.log('closeLoginError called');
+            console.log('=== CLOSE LOGIN ERROR DEBUG ===');
             const modal = document.getElementById('login-error-modal');
+            console.log('1. Modal before close:', {
+                classes: modal.className,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
             modal.classList.remove('show');
-            console.log('Modal show removed, classes:', modal.className);
+            console.log('2. Modal after remove show:', {
+                classes: modal.className,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
         }
 
         // Recovery Modal Functions
         function openRecoveryModal() {
-            console.log('openRecoveryModal called');
+            console.log('=== OPEN RECOVERY MODAL DEBUG ===');
             const modal = document.getElementById('recovery-modal');
-            console.log('Recovery modal element:', modal);
-            console.log('Modal classes before:', modal.className);
+            console.log('1. Recovery modal element found:', !!modal);
+            console.log('2. Modal classes before:', modal.className);
+            console.log('3. Modal computed style before:', {
+                display: window.getComputedStyle(modal).display,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
             
             modal.classList.add('show');
-            console.log('Modal classes after add show:', modal.className);
-            console.log('Modal display:', window.getComputedStyle(modal).display);
+            console.log('4. Modal classes after add show:', modal.className);
+            console.log('5. Modal computed style after:', {
+                display: window.getComputedStyle(modal).display,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
         }
 
         function closeRecoveryModal() {
-            console.log('closeRecoveryModal called');
+            console.log('=== CLOSE RECOVERY MODAL DEBUG ===');
             const modal = document.getElementById('recovery-modal');
+            console.log('1. Modal before close:', {
+                classes: modal.className,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
             modal.classList.remove('show');
-            console.log('Recovery modal show removed, classes:', modal.className);
+            console.log('2. Modal after remove show:', {
+                classes: modal.className,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
             document.getElementById('recovery-form').reset();
         }
 
         // Recovery Form
         document.getElementById('recovery-form').addEventListener('submit', function(e) {
-            console.log('Recovery form submitted');
+            console.log('=== RECOVERY FORM SUBMISSION DEBUG ===');
             e.preventDefault();
             
             const recoveryModal = document.getElementById('recovery-modal');
             const errorModal = document.getElementById('recovery-error-modal');
             
-            console.log('Recovery modal:', recoveryModal);
-            console.log('Error modal:', errorModal);
+            console.log('1. Recovery modal found:', !!recoveryModal);
+            console.log('2. Error modal found:', !!errorModal);
+            console.log('3. Recovery modal before:', {
+                classes: recoveryModal.className,
+                opacity: window.getComputedStyle(recoveryModal).opacity,
+                visibility: window.getComputedStyle(recoveryModal).visibility
+            });
             
             // Simulación: siempre correo no encontrado
             recoveryModal.classList.remove('show');
-            console.log('Recovery modal show removed, classes:', recoveryModal.className);
+            console.log('4. Recovery modal after remove show:', {
+                classes: recoveryModal.className,
+                opacity: window.getComputedStyle(recoveryModal).opacity,
+                visibility: window.getComputedStyle(recoveryModal).visibility
+            });
             
             errorModal.classList.add('show');
-            console.log('Error modal show added, classes:', errorModal.className);
-            console.log('Error modal display:', window.getComputedStyle(errorModal).display);
+            console.log('5. Error modal after add show:', {
+                classes: errorModal.className,
+                opacity: window.getComputedStyle(errorModal).opacity,
+                visibility: window.getComputedStyle(errorModal).visibility,
+                display: window.getComputedStyle(errorModal).display
+            });
             
             this.reset();
         });
 
         function closeRecoveryError() {
-            console.log('closeRecoveryError called');
+            console.log('=== CLOSE RECOVERY ERROR DEBUG ===');
             const modal = document.getElementById('recovery-error-modal');
+            console.log('1. Modal before close:', {
+                classes: modal.className,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
             modal.classList.remove('show');
-            console.log('Recovery error modal show removed, classes:', modal.className);
+            console.log('2. Modal after remove show:', {
+                classes: modal.className,
+                opacity: window.getComputedStyle(modal).opacity,
+                visibility: window.getComputedStyle(modal).visibility
+            });
         }
 
         // Observador para animaciones reveal

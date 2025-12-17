@@ -158,7 +158,7 @@
     </section>
 
     <!-- MODAL ÉXITO REGISTRO -->
-    <div id="register-success-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div id="register-success-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" style="opacity: 0; visibility: hidden; pointer-events: none;">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
@@ -176,7 +176,7 @@
     </div>
 
     <!-- MODAL ERROR CONTRASEÑA -->
-    <div id="register-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div id="register-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" style="opacity: 0; visibility: hidden; pointer-events: none;">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
@@ -201,36 +201,110 @@
         const errorText = document.getElementById('register-error-text');
 
         registerForm.addEventListener('submit', function(e) {
+            console.log('=== REGISTER FORM SUBMISSION DEBUG ===');
             e.preventDefault();
             const password = document.getElementById('password').value;
             const confirm = document.getElementById('confirm').value;
 
+            console.log('1. Form validation started');
+            console.log('2. Passwords match:', password === confirm);
+            console.log('3. Success modal found:', !!successModal);
+            console.log('4. Error modal found:', !!errorModal);
+
             if (password !== confirm) {
+                console.log('5. Password mismatch - showing error modal');
                 errorText.textContent = 'Las contraseñas no coinciden.';
-                errorModal.classList.remove('hidden');
+                console.log('6. Error modal before show:', {
+                    classes: errorModal.className,
+                    opacity: window.getComputedStyle(errorModal).opacity,
+                    visibility: window.getComputedStyle(errorModal).visibility
+                });
+                errorModal.classList.add('show');
+                console.log('7. Error modal after show:', {
+                    classes: errorModal.className,
+                    opacity: window.getComputedStyle(errorModal).opacity,
+                    visibility: window.getComputedStyle(errorModal).visibility
+                });
+                document.body.style.overflow = 'hidden';
                 return;
             }
 
             // Simulación de validación de datos obligatorios
             const requiredIds = ['nombre', 'apellido', 'correo', 'telefono', 'documento'];
             const hasEmpty = requiredIds.some(id => !document.getElementById(id).value.trim());
-            if (hasEmpty || !document.getElementById('terminos').checked) {
+            const terminosChecked = document.getElementById('terminos').checked;
+            
+            console.log('8. Required fields validation:', {
+                hasEmpty: hasEmpty,
+                terminosChecked: terminosChecked,
+                emptyFields: requiredIds.filter(id => !document.getElementById(id).value.trim())
+            });
+            
+            if (hasEmpty || !terminosChecked) {
+                console.log('9. Validation failed - showing error modal');
                 errorText.textContent = 'Completa todos los campos y acepta los términos.';
-                errorModal.classList.remove('hidden');
+                console.log('10. Error modal before show:', {
+                    classes: errorModal.className,
+                    opacity: window.getComputedStyle(errorModal).opacity,
+                    visibility: window.getComputedStyle(errorModal).visibility
+                });
+                errorModal.classList.add('show');
+                console.log('11. Error modal after show:', {
+                    classes: errorModal.className,
+                    opacity: window.getComputedStyle(errorModal).opacity,
+                    visibility: window.getComputedStyle(errorModal).visibility
+                });
+                document.body.style.overflow = 'hidden';
                 return;
             }
 
             // Mostrar éxito
-            successModal.classList.remove('hidden');
+            console.log('12. Validation successful - showing success modal');
+            console.log('13. Success modal before show:', {
+                classes: successModal.className,
+                opacity: window.getComputedStyle(successModal).opacity,
+                visibility: window.getComputedStyle(successModal).visibility
+            });
+            successModal.classList.add('show');
+            console.log('14. Success modal after show:', {
+                classes: successModal.className,
+                opacity: window.getComputedStyle(successModal).opacity,
+                visibility: window.getComputedStyle(successModal).visibility
+            });
+            document.body.style.overflow = 'hidden';
             this.reset();
         });
 
         function closeRegisterSuccess() {
-            successModal.classList.add('hidden');
+            console.log('=== CLOSE REGISTER SUCCESS DEBUG ===');
+            console.log('1. Success modal before close:', {
+                classes: successModal.className,
+                opacity: window.getComputedStyle(successModal).opacity,
+                visibility: window.getComputedStyle(successModal).visibility
+            });
+            successModal.classList.remove('show');
+            console.log('2. Success modal after close:', {
+                classes: successModal.className,
+                opacity: window.getComputedStyle(successModal).opacity,
+                visibility: window.getComputedStyle(successModal).visibility
+            });
+            document.body.style.overflow = '';
         }
 
         function closeRegisterError() {
-            errorModal.classList.add('hidden');
+            console.log('=== CLOSE REGISTER ERROR DEBUG ===');
+            console.log('1. Error modal before close:', {
+                classes: errorModal.className,
+                opacity: window.getComputedStyle(errorModal).opacity,
+                visibility: window.getComputedStyle(errorModal).visibility
+            });
+            errorModal.classList.remove('show');
+            console.log('2. Error modal after close:', {
+                classes: errorModal.className,
+                opacity: window.getComputedStyle(errorModal).opacity,
+                visibility: window.getComputedStyle(errorModal).visibility
+            });
+            document.body.style.overflow = '';
         }
 
         // Observador reveal
