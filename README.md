@@ -20,23 +20,6 @@ Proyecto web estático para STARMEDICA S.A.S, clínica especializada en cardiolo
 ## Branding
 Somos expertos creando herramientas de tecnología para empresas de salud y clínicas. Proyecto desarrollado por [MVL](https://mvlmkt.com/) Marketing.
 
-- **Marca:** La palabra "MVL." utiliza la tipografía Cyberjunkies.
-- **Fuente Cyberjunkies:** incluida en `font/Cyberjunkies/`.
-  - `Cyberjunkies.ttf`, `Cyberjunkies.otf`
-  - `Cyberjunkies Italic.ttf`, `Cyberjunkies Italic.otf`
-  - `cyberjunkies.css` (declaraciones `@font-face`)
-  - `license.txt`
-
-### Uso de la fuente Cyberjunkies
-1. Incluir el CSS de la fuente donde se requiera:
-   ```html
-   <link rel="stylesheet" href="font/Cyberjunkies/cyberjunkies.css">
-   ```
-2. Aplicar la clase utilitaria para la marca:
-   ```html
-   <span class="font-cyberjunkies">MVL.</span>
-   ```
-
 ## MVL Marketing: Solución para Empresas de Salud
 **MVL Marketing** es un partner tecnológico para clínicas y empresas como STARMEDICA. Unificamos estrategia y ejecución en tres pilares:
 
