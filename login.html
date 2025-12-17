@@ -302,6 +302,10 @@
             
             // Simulación de validación: siempre muestra credenciales inválidas
             modal.classList.add('show');
+            // Fallback inline in case external CSS is blocked/cached
+            modal.style.opacity = '1';
+            modal.style.visibility = 'visible';
+            modal.style.pointerEvents = 'auto';
             document.body.style.overflow = 'hidden';
             console.log('5. Modal classes after add show:', modal.className);
             console.log('6. Modal computed style after show:', {
@@ -323,6 +327,9 @@
                 visibility: window.getComputedStyle(modal).visibility
             });
             modal.classList.remove('show');
+            modal.style.opacity = '';
+            modal.style.visibility = '';
+            modal.style.pointerEvents = '';
             document.body.style.overflow = '';
             console.log('2. Modal after remove show:', {
                 classes: modal.className,
