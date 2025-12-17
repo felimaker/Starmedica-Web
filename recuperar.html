@@ -87,7 +87,7 @@
     </section>
 
     <!-- MODAL CORREO NO ENCONTRADO -->
-    <div id="rec-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" style="opacity: 0; visibility: hidden; pointer-events: none;">
+    <div id="rec-error-modal" class="modal-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl text-center p-8">
             <div class="mb-6">
                 <div class="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
@@ -124,6 +124,10 @@
             
             // Simulación: siempre correo no encontrado
             recErrorModal.classList.add('show');
+            // Fallback inline por si el CSS no se aplica
+            recErrorModal.style.opacity = '1';
+            recErrorModal.style.visibility = 'visible';
+            recErrorModal.style.pointerEvents = 'auto';
             console.log('4. Error modal after show:', {
                 classes: recErrorModal.className,
                 opacity: window.getComputedStyle(recErrorModal).opacity,
@@ -143,6 +147,9 @@
                 visibility: window.getComputedStyle(recErrorModal).visibility
             });
             recErrorModal.classList.remove('show');
+            recErrorModal.style.opacity = '';
+            recErrorModal.style.visibility = '';
+            recErrorModal.style.pointerEvents = '';
             console.log('2. Error modal after close:', {
                 classes: recErrorModal.className,
                 opacity: window.getComputedStyle(recErrorModal).opacity,
